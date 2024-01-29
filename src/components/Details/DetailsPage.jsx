@@ -17,10 +17,10 @@ const DetailsPage = () => {
 
     if (Object?.keys(details)?.length > 0) {
         return (
-        <>Hello there! this is the details page!
-       <section data-testid='movieDetails'>
+            <>Hello there! this is the details page!
+                <section data-testid='movieDetails'>
                     <div>
-                        <button variant="contained"
+                        <button
                             data-testid="toList"
                             onClick={handleClick}>
                             Go back to movies list
@@ -29,33 +29,32 @@ const DetailsPage = () => {
                 </section>
 
                 <section>
-                    <h3>Movie details</h3>
-
+                    <h3>Movie Details!</h3>
                     <img src={details?.poster} />
                     <h2>{details?.title}</h2>
-                    <h4>Genre:</h4><b>
-                     {details?.genres.map(element => { return element.name }).join(', ')}
-                     </b>
-                     <p>
-                     {details?.description} 
-                     </p>
+                    <p>Genre:</p><b>
+                        {details?.genres.map(element => { return element.name }).join(', ')}
+                    </b>
+                    <p>
+                        {details?.description}
+                    </p>
                 </section>
-      </>
-    )
-} else {
+            </>
+        )
+    } else {
 
-    return (
-        <>
-            <p>Movie Details</p>
-            <button
-                data-testid="toList"
-                onClick={handleClick}>
-                Go back to movies list
-            </button>
-        </>
+        return (
+            <>
+                <p>Movie Details</p>
+                <button
+                    data-testid="toList"
+                    onClick={handleClick}>
+                    Go back to movies list
+                </button>
+            </>
 
-    )
-}
+        )
+    }
 }
 
 

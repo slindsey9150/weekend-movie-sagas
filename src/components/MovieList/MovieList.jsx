@@ -5,12 +5,9 @@ import { useHistory } from 'react-router-dom'
 
 
 function MovieList() {
-
   const history = useHistory();
-
   const dispatch = useDispatch();
   const movies = useSelector(store => store.movies);
-
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
   }, []);
