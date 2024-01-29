@@ -17,6 +17,44 @@ router.get('/', (req, res) => {
     })
 
 });
+router.get('/:id', (req, res) => {
+  console.log("req.params.id", req.params.id)
+     //empty object to store details about the movie clicked
+  let movieDetails = {}
+  console.log("movie details - should be empty", movieDetails)
+     //SQL query to select all colums associated with the id (row)
+  let queryText =
+    `SELECT * FROM "movies"
+  WHERE "id" = $1;`;
+
+      //array that contains the movie id called in the url path
+  let queryParams = [req.params.id];
+
+  pool.query(queryText, queryParams)
+    .then(result => {
+      movieDetails = { ...movieDetails, ...result.rows[0] }
+      console.log("Movie Details after - should not be empty", movieDetails)
+        queryText = `
+    SELECT genres.name FROM "movies"
+    JOIN "movies_genres" ON movies_genres.movie_id = movies.id
+    JOIN "genres" ON movies_genres.genre_id = genres.id
+    WHERE movies.id = $1;
+    `
+      pool.query(queryText, queryParams)
+        .then(result => {
+          movieDetails = { ...movieDetails, genres: result.rows }
+          console.log("movie details", movieDetails)
+          res.send(movieDetails)
+        }).catch(error => {
+          console.log("error", error)
+        })
+    })
+    .catch(error => {
+      console.log("error getting details", error)
+      res.sendStatus(500)
+    })
+}) 
+
 
 router.post('/', (req, res) => {
   console.log(req.body);
