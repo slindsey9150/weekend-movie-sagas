@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 const DetailsPage = () => {
 
     const movies = useSelector(store => store.movies);
+    console.log("here are the movies", movies);
     const details = useSelector(store => store.details)
     const history = useHistory();
 
@@ -22,10 +23,9 @@ const DetailsPage = () => {
                         <button variant="contained"
                             data-testid="toList"
                             onClick={handleClick}>
-                            Back to Movie List Page
+                            Go back to movies list
                         </button>
                     </div>
-
                 </section>
 
                 <section>
@@ -33,13 +33,12 @@ const DetailsPage = () => {
 
                     <img src={details?.poster} />
                     <h2>{details?.title}</h2>
-                    <h4>Genre:</h4>
-                        
+                    <h4>Genre:</h4><b>
                      {details?.genres.map(element => { return element.name }).join(', ')}
-                       
-                     {details?.description}
-                        
-                    
+                     </b>
+                     <p>
+                     {details?.description} 
+                     </p>
                 </section>
       </>
     )
@@ -51,7 +50,7 @@ const DetailsPage = () => {
             <button
                 data-testid="toList"
                 onClick={handleClick}>
-                Back to Movie List Page
+                Go back to movies list
             </button>
         </>
 
