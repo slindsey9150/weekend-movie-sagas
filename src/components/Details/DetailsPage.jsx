@@ -10,20 +10,53 @@ const DetailsPage = () => {
     const history = useHistory();
 
 
+    const handleClick = () => {
+        history.push('/')
+    }
 
-
-    return (
+    if (Object?.keys(details)?.length > 0) {
+        return (
         <>Hello there! this is the details page!
-        <section className="movies">
-            {movies.map((movie) => {
-                return (
-                    <div key= {movie.id}> {movie.description}</div>
-                )
+       <section data-testid='movieDetails'>
+                    <div>
+                        <button variant="contained"
+                            data-testid="toList"
+                            onClick={handleClick}>
+                            Back to Movie List Page
+                        </button>
+                    </div>
 
-            })}
-      </section>
+                </section>
+
+                <section>
+                    <h3>Movie details</h3>
+
+                    <img src={details?.poster} />
+                    <h2>{details?.title}</h2>
+                    <h4>Genre:</h4>
+                        
+                     {details?.genres.map(element => { return element.name }).join(', ')}
+                       
+                     {details?.description}
+                        
+                    
+                </section>
       </>
     )
+} else {
+
+    return (
+        <>
+            <p>Movie Details</p>
+            <button
+                data-testid="toList"
+                onClick={handleClick}>
+                Back to Movie List Page
+            </button>
+        </>
+
+    )
+}
 }
 
 

@@ -16,7 +16,7 @@ function MovieList() {
   }, []);
 
   const clickMovie = (movieId) => {
-    console.log(`you clicked a movie ${movieName}`);
+    // console.log(`you clicked a movie ${movieName}`);
       history.push('/details');
       dispatch({ type: 'FETCH_DETAILS', payload: movieId})
   }
