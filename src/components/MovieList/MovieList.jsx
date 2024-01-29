@@ -11,6 +11,9 @@ function MovieList() {
     dispatch({ type: 'FETCH_MOVIES' });
   }, []);
 
+  const clickMovie = (movieName) => {
+    console.log(`you clicked a movie ${movieName}`);
+  }
   return (
     <main>
       <h1>MovieList</h1>
@@ -19,7 +22,7 @@ function MovieList() {
           return (
             <div data-testid='movieItem' key={movie.id}>
               <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title}/>
+             <button onClick={() => {clickMovie(movie.title)}}><img src={movie.poster} alt={movie.title}/> </button> 
             </div>
           );
         })}
