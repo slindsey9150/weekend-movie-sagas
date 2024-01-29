@@ -11,18 +11,18 @@ const DetailsPage = () => {
     const history = useHistory();
 
 
-    const handleClick = () => {
+    const buttonClick = () => {
         history.push('/')
     }
 
     if (Object?.keys(details)?.length > 0) {
         return (
-            <>Hello there! this is the details page!
-                <section data-testid='movieDetails'>
+            <div data-testid='movieDetails'>Hello there! this is the details page!
+                <section >
                     <div>
                         <button
                             data-testid="toList"
-                            onClick={handleClick}>
+                            onClick={buttonClick}>
                             Go back to movies list
                         </button>
                     </div>
@@ -30,16 +30,16 @@ const DetailsPage = () => {
 
                 <section>
                     <h3>Movie Details!</h3>
-                    <img src={details?.poster} />
-                    <h2>{details?.title}</h2>
+                    <img src={details.poster} />
+                    <h2>{details.title}</h2>
                     <p>Genre:</p><b>
-                        {details?.genres.map(element => { return element.name }).join(', ')}
+                        {details.genres.map(element => { return element.name }).join(', ')}
                     </b>
                     <p>
                         {details?.description}
                     </p>
                 </section>
-            </>
+            </div>
         )
     } else {
 
@@ -48,7 +48,7 @@ const DetailsPage = () => {
                 <p>Movie Details</p>
                 <button
                     data-testid="toList"
-                    onClick={handleClick}>
+                    onClick={buttonClick}>
                     Go back to movies list
                 </button>
             </>
