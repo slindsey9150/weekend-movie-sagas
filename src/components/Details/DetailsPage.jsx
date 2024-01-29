@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+
 
 
 
@@ -13,11 +12,7 @@ const DetailsPage = () => {
     console.log("here are the movies", movies);
     const details = useSelector(store => store.details)
     const history = useHistory();
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_DETAILS'});
-      }, [dispatch]);
 
 
     const buttonClick = () => {

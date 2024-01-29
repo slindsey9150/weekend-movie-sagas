@@ -79,6 +79,8 @@ const storeInstance = createStore(
   applyMiddleware(sagaMiddleware, logger),
 );
 
+
+
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
