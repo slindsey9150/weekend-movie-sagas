@@ -26,7 +26,9 @@ function* fetchAllMovies() {
 function* fetchMovieDetails(action) {
   try {
     console.log("action.payload", action.payload)
+    // Get the movie details
     const movieDetails = yield axios.get(`/api/movies/${action.payload}`);
+// Set the values of the details reducer
     yield put({
       type: 'GET_DETAILS',
       payload: movieDetails.data
@@ -58,7 +60,7 @@ const genres = (state = [], action) => {
       return state;
   }
 }
-
+// Used to store the movie details
 const details = (state = {}, action) => {
   switch (action.type) {
     case 'GET_DETAILS':
