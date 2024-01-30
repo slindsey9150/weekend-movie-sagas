@@ -50,9 +50,23 @@ router.get('/:id', (req, res) => {
     })
 }) 
 
-router.post (() => {
+router.post ('/', (req,res) => {
 console.log('we\'re posting now boiz');
 
+let queryText = `
+INSERT INTO "movies" ("title", "poster", "description")
+VALUES
+('me', 'some link', 'Im alright sometimes')
+`
+
+pool.query(queryText)
+.then(result => {
+  res.sendStatus(200)
+})
+.catch(error => {
+  res.sendStatus(500)
+  console.log('error in movies post route', error);
+})
 })
 
 
