@@ -50,6 +50,11 @@ router.get('/:id', (req, res) => {
     })
 }) 
 
+router.post (() => {
+console.log('we\'re posting now boiz');
+
+})
+
 
 
 

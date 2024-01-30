@@ -38,6 +38,10 @@ function* fetchMovieDetails(action) {
   }
 }
 
+function* postMovie () {
+  
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
